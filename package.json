@@ -1,0 +1,33 @@
+{
+  "name": "helpers",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "homepage": "./",
+  "bin": "index.js",
+  "pkg": {
+    "assets": [
+      "node_modules/**/*",
+      "config/**/*"
+    ],
+    "targets": [
+      "node14-win-x64"
+    ]
+  },
+  "scripts": {
+    "build": "node-gyp rebuild",
+    "clean": "node-gyp clean"
+  },
+  "keywords": [],
+  "author": "Nhat Vu",
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "moment": "^2.27.0",
+    "node-addon-api": "^3.1.0",
+    "software-license-key": "^1.0.0"
+  },
+  "gypfile": true,
+  "devDependencies": {
+    "node-gyp": "^7.1.2"
+  }
+}
