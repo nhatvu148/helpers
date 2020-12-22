@@ -26,3 +26,5 @@
 - https://www.javatpoint.com/cpp-int-to-string
 
 - https://adamrehn.com/articles/creating-javascript-bindings-for-c-cxx-libraries-with-emscripten/
+
+- https://www.w3schools.com/cpp/
