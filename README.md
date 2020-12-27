@@ -35,3 +35,6 @@
 
 # Set PATH to Script folder in Windows:
 - C:\Python39\Scripts
+
+# Build Electron:
+- https://www.electronjs.org/docs/development/build-instructions-gn
