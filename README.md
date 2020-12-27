@@ -38,3 +38,10 @@
 
 # Build Electron:
 - https://www.electronjs.org/docs/development/build-instructions-gn
+
+# Tools:
+- https://jquery.com/
+- https://lodash.com/
+- https://pixijs.io/examples/#/demos-basic/container.js
+- https://greensock.com/
+- https://greensock.com/docs/v2/Plugins/PixiPlugin
