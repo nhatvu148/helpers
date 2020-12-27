@@ -36,8 +36,9 @@
 # Set PATH to Script folder in Windows:
 - C:\Python39\Scripts
 
-# Build Electron:
+# Build Electron, NWJS:
 - https://www.electronjs.org/docs/development/build-instructions-gn
+- https://hackernoon.com/why-i-prefer-nw-js-over-electron-2018-comparison-e60b7289752
 
 # Tools:
 - https://jquery.com/
