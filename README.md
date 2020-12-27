@@ -28,3 +28,10 @@
 - https://adamrehn.com/articles/creating-javascript-bindings-for-c-cxx-libraries-with-emscripten/
 
 - https://www.w3schools.com/cpp/
+
+# Exe builders:
+- https://www.geeksforgeeks.org/convert-python-script-to-exe-file/
+- https://github.com/OsamaAbbas/bytenode
+
+# Set PATH to Script folder in Windows:
+- C:\Python39\Scripts
