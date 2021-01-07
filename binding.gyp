@@ -1,6 +1,7 @@
 {
     "targets": [{
-        "target_name": "hello",
+        "target_name": "calculate",
+        # "target_name": "hello",
         # "target_name": "helpers",
         "cflags!": [ "-fno-exceptions" ],
         "cflags_cc!": [ "-fno-exceptions" ],
@@ -10,7 +11,7 @@
             # "src/Samples/actualclass.cpp",
             # "src/Samples/classexample.cpp",
             # "src/Samples/mytest.cpp"
-            "src/hello.cc"
+            "src/calculate.cc"
         ],
         'include_dirs': [
             "<!@(node -p \"require('node-addon-api').include\")"
