@@ -1,16 +1,23 @@
 # Yarn Global Directory
-- yarn gloabl dir
-- yarn gloabl bin
+
+- yarn global dir
+- yarn global bin
 
 # NPM Gloabl Directory
+
 - npm bin -g
 
 # Run node-gyp
+
 - "C:\Users\TechnoStar\AppData\Local\Yarn\Data\global\node_modules\.bin\node-gyp.cmd" clean
 - "C:\Users\TechnoStar\AppData\Local\Yarn\Data\global\node_modules\.bin\node-gyp.cmd" configure
 - "C:\Users\TechnoStar\AppData\Local\Yarn\Data\global\node_modules\.bin\node-gyp.cmd" build
+- node-gyp clean
+- node-gyp configure
+- node-gyp build
 
 # Reference
+
 - https://github.com/nodejs/node-addon-api/blob/master/doc/node-gyp.md
 
 - https://medium.com/@a7ul/beginners-guide-to-writing-nodejs-addons-using-c-and-n-api-node-addon-api-9b3b718a9a7f
@@ -30,17 +37,21 @@
 - https://www.w3schools.com/cpp/
 
 # Exe builders:
+
 - https://www.geeksforgeeks.org/convert-python-script-to-exe-file/
 - https://github.com/OsamaAbbas/bytenode
 
 # Set PATH to Script folder in Windows:
+
 - C:\Python39\Scripts
 
 # Build Electron, NWJS:
+
 - https://www.electronjs.org/docs/development/build-instructions-gn
 - https://hackernoon.com/why-i-prefer-nw-js-over-electron-2018-comparison-e60b7289752
 
 # Tools:
+
 - https://jquery.com/
 - https://lodash.com/
 - https://pixijs.io/examples/#/demos-basic/container.js
@@ -51,12 +62,12 @@
 
 - python3 -m pip list
 - python3 setup.py sdist
-- python3 -m twine upload dist/*
+- python3 -m twine upload dist/\*
 
 - python3 -m venv venv
 - python3 -m venv venv --system-site-packages
 - source ./venv/bin/activate
-- python3 -m pip install -r requirements.txt 
+- python3 -m pip install -r requirements.txt
 - which python3
 - python3 -m pip freeze > requirements.txt
 - python3 -m pip list --local
