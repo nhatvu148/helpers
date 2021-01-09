@@ -1,8 +1,9 @@
-const nodeTest = require("../build/Release/NodeTest.node");
+// const nodeTest = require("../build/Release/NodeTest.node");
+import nodeTest from "../AddonTypes";
 
 console.log(nodeTest.pass_number(123));
 console.log(nodeTest.pass_integer(122));
 console.log(nodeTest.add_2_numbers(1, 1));
 console.log(nodeTest.pass_string("Hello Nhat Vu!"));
 console.log(nodeTest.pass_boolean(true));
-console.log(nodeTest.pass_object({hello: "Rin"}));
+console.log(nodeTest.pass_object({ hello: "Rin" }));
