@@ -1,10 +1,8 @@
 {
     "targets": [{
-        # "target_name": "NodeTest",
-        "target_name": "NanTest",
+        "target_name": "addon",
         "sources": [
-            # "src/NodeTest.cpp"
-            "src/NanTest.cpp",
+            "src/main.cpp",
             # "src/MyObject.cpp",
             # "src/FactoryWrap.cpp",
             "src/PassWrap.cpp",

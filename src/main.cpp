@@ -4,6 +4,7 @@
 #include "PassWrap.h"
 #include <fstream>
 #include <string>
+#include "v8pp/module.hpp"
 
 void Method(const Nan::FunctionCallbackInfo<v8::Value> &info)
 {
@@ -28,6 +29,79 @@ void Calculate(const Nan::FunctionCallbackInfo<v8::Value> &info)
   printf("Hello from C++ is %f\n", x);
   logFile << "Result is " << std::to_string(1234) << " " << x;
   info.GetReturnValue().Set(total);
+}
+
+void PassNumber(const Nan::FunctionCallbackInfo<v8::Value> &info)
+{
+  v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
+
+  double value = info[0]->NumberValue(context).FromJust();
+
+  v8::Local<v8::Number> retval = Nan::New(value + 1234);
+  info.GetReturnValue().Set(retval);
+}
+
+void PassInteger(const Nan::FunctionCallbackInfo<v8::Value> &info)
+{
+  v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
+
+  double value = info[0]->NumberValue(context).FromJust();
+
+  v8::Local<v8::Number> retval = Nan::New(value + 1);
+  info.GetReturnValue().Set(retval);
+}
+
+void Add2Numbers(const Nan::FunctionCallbackInfo<v8::Value> &info)
+{
+  v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
+
+  double value1 = info[0]->NumberValue(context).FromJust();
+  double value2 = info[1]->NumberValue(context).FromJust();
+
+  v8::Local<v8::Number> retval = Nan::New(value1 + value2);
+  info.GetReturnValue().Set(retval);
+}
+
+void PassBoolean(const Nan::FunctionCallbackInfo<v8::Value> &info)
+{
+  v8::Isolate *isolate = info.GetIsolate();
+  v8::Local<v8::Boolean> target = info[0]->ToBoolean(v8::Isolate::GetCurrent());
+  bool value = target.As<v8::Boolean>()->Value();
+
+  v8::Local<v8::Boolean> retval = v8::Boolean::New(isolate, !value);
+  info.GetReturnValue().Set(retval);
+}
+
+void PassString(const Nan::FunctionCallbackInfo<v8::Value> &info)
+{
+  v8::String::Utf8Value s(v8::Isolate::GetCurrent(), info[0]);
+  std::string str(*s, s.length());
+  std::reverse(str.begin(), str.end());
+
+  v8::Local<v8::String> retval = Nan::New(str.c_str()).ToLocalChecked();
+  info.GetReturnValue().Set(retval);
+}
+
+void PassObject(const Nan::FunctionCallbackInfo<v8::Value> &info)
+{
+  v8::Isolate *isolate = info.GetIsolate();
+  v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
+  v8::Local<v8::Object> target = info[0]->ToObject(isolate->GetCurrentContext()).ToLocalChecked();
+
+  std::vector<int> vector{1, 2, 3};
+  v8::Local<v8::Array> v8_vector = v8pp::to_v8(isolate, vector);
+
+  std::map<std::string, int> map{{"a", 10}, {"b", 12}};
+  v8::Local<v8::Object> v8_map = v8pp::to_v8(isolate, map);
+
+  auto v = v8pp::from_v8<std::vector<int>>(isolate, v8_vector);
+  auto m = v8pp::from_v8<std::map<std::string, int>>(isolate, v8_map);
+  for (const auto &elem : m)
+  {
+    printf("%s\n", elem.first);
+    printf("%d\n", elem.second);
+  }
+  info.GetReturnValue().Set(target);
 }
 
 void Add(const Nan::FunctionCallbackInfo<v8::Value> &info)
@@ -116,16 +190,46 @@ void Initialize(v8::Local<v8::Object> exports, v8::Local<v8::Object> module)
   //              Nan::New<v8::FunctionTemplate>(Method)
   //                  ->GetFunction(context)
   //                  .ToLocalChecked());
-  exports->Set(context,
-               Nan::New("calc").ToLocalChecked(),
-               Nan::New<v8::FunctionTemplate>(Calculate)
-                   ->GetFunction(context)
-                   .ToLocalChecked());
+  // exports->Set(context,
+  //              Nan::New("calc").ToLocalChecked(),
+  //              Nan::New<v8::FunctionTemplate>(Calculate)
+  //                  ->GetFunction(context)
+  //                  .ToLocalChecked());
   // exports->Set(context,
   //              Nan::New("add").ToLocalChecked(),
   //              Nan::New<v8::FunctionTemplate>(Add)
   //                  ->GetFunction(context)
   //                  .ToLocalChecked());
+  exports->Set(context,
+               Nan::New("pass_number").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(PassNumber)
+                   ->GetFunction(context)
+                   .ToLocalChecked());
+  exports->Set(context,
+               Nan::New("pass_integer").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(PassInteger)
+                   ->GetFunction(context)
+                   .ToLocalChecked());
+  exports->Set(context,
+               Nan::New("add_2_numbers").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(Add2Numbers)
+                   ->GetFunction(context)
+                   .ToLocalChecked());
+  exports->Set(context,
+               Nan::New("pass_boolean").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(PassBoolean)
+                   ->GetFunction(context)
+                   .ToLocalChecked());
+  exports->Set(context,
+               Nan::New("pass_string").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(PassString)
+                   ->GetFunction(context)
+                   .ToLocalChecked());
+  exports->Set(context,
+               Nan::New("pass_object").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(PassObject)
+                   ->GetFunction(context)
+                   .ToLocalChecked());
 
   // module->Set(context,
   //             Nan::New("exports").ToLocalChecked(),
