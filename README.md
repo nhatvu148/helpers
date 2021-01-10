@@ -77,3 +77,10 @@
 - venv\Scripts\activate.bat
 - where python
 - rmdir venv /s
+
+# VSCode Extensions for C++
+
+- ms-vscode.cpptools
+- mitaki28.vscode-clang
+- ms-vscode.cmake-tools
+- twxs.cmake
