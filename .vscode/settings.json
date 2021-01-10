@@ -56,6 +56,8 @@
         "array": "cpp",
         "map": "cpp",
         "xtree": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "deque": "cpp",
+        "queue": "cpp"
     }
 }

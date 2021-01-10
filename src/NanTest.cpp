@@ -2,10 +2,32 @@
 // #include "MyObject.h"
 // #include "FactoryWrap.h"
 #include "PassWrap.h"
+#include <fstream>
+#include <string>
 
 void Method(const Nan::FunctionCallbackInfo<v8::Value> &info)
 {
   info.GetReturnValue().Set(Nan::New("world").ToLocalChecked());
+}
+
+void Calculate(const Nan::FunctionCallbackInfo<v8::Value> &info)
+{
+  v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
+
+  int i;
+  double x = 122.34;
+  double y = 203.54;
+
+  for (i = 0; i < 1000000000; i++)
+  {
+    x += y;
+  }
+
+  auto total = Nan::New(x);
+  std::ofstream logFile("logfile.txt");
+  printf("Hello from C++ is %f\n", x);
+  logFile << "Result is " << std::to_string(1234) << " " << x;
+  info.GetReturnValue().Set(total);
 }
 
 void Add(const Nan::FunctionCallbackInfo<v8::Value> &info)
@@ -94,6 +116,11 @@ void Initialize(v8::Local<v8::Object> exports, v8::Local<v8::Object> module)
   //              Nan::New<v8::FunctionTemplate>(Method)
   //                  ->GetFunction(context)
   //                  .ToLocalChecked());
+  exports->Set(context,
+               Nan::New("calc").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(Calculate)
+                   ->GetFunction(context)
+                   .ToLocalChecked());
   // exports->Set(context,
   //              Nan::New("add").ToLocalChecked(),
   //              Nan::New<v8::FunctionTemplate>(Add)
@@ -126,17 +153,17 @@ void Initialize(v8::Local<v8::Object> exports, v8::Local<v8::Object> module)
   //                 ->GetFunction(context)
   //                 .ToLocalChecked());
 
-  MyObject::Init();
-  exports->Set(context,
-               Nan::New("createObject").ToLocalChecked(),
-               Nan::New<v8::FunctionTemplate>(CreateObject2)
-                   ->GetFunction(context)
-                   .ToLocalChecked());
-  exports->Set(context,
-               Nan::New("add").ToLocalChecked(),
-               Nan::New<v8::FunctionTemplate>(Add2)
-                   ->GetFunction(context)
-                   .ToLocalChecked());
+  // MyObject::Init();
+  // exports->Set(context,
+  //              Nan::New("createObject").ToLocalChecked(),
+  //              Nan::New<v8::FunctionTemplate>(CreateObject2)
+  //                  ->GetFunction(context)
+  //                  .ToLocalChecked());
+  // exports->Set(context,
+  //              Nan::New("add").ToLocalChecked(),
+  //              Nan::New<v8::FunctionTemplate>(Add2)
+  //                  ->GetFunction(context)
+  //                  .ToLocalChecked());
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)

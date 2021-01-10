@@ -35,7 +35,25 @@ const NanTest = addon("NanTest");
 // console.log(obj2.plusOne()); // 22
 // console.log(obj2.plusOne()); // 23
 
-const obj1 = NanTest.createObject(10);
-const obj2 = NanTest.createObject(20);
-const result = NanTest.add(obj1, obj2);
-console.log(result); // 30
+// const obj1 = NanTest.createObject(10);
+// const obj2 = NanTest.createObject(20);
+// const result = NanTest.add(obj1, obj2);
+// console.log(result); // 30
+
+const calcJS = () => {
+  let i,
+    x = 122.34,
+    y = 203.54;
+
+  for (i = 0; i < 1000000000; i++) {
+    x += y;
+  }
+  const total = x;
+  return total;
+};
+console.time("JS");
+console.log(calcJS());
+console.timeEnd("JS");
+console.time("C++");
+console.log(NanTest.calc());
+console.timeEnd("C++");
