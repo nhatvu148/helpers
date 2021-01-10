@@ -1,4 +1,7 @@
 #include <nan.h>
+// #include "MyObject.h"
+// #include "FactoryWrap.h"
+#include "PassWrap.h"
 
 void Method(const Nan::FunctionCallbackInfo<v8::Value> &info)
 {
@@ -66,6 +69,23 @@ void CreateFunction(const Nan::FunctionCallbackInfo<v8::Value> &info)
   info.GetReturnValue().Set(fn);
 }
 
+void CreateObject2(const Nan::FunctionCallbackInfo<v8::Value> &info)
+{
+  info.GetReturnValue().Set(MyObject::NewInstance(info[0]));
+}
+
+void Add2(const Nan::FunctionCallbackInfo<v8::Value> &info)
+{
+  v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
+
+  MyObject *obj1 = Nan::ObjectWrap::Unwrap<MyObject>(
+      info[0]->ToObject(context).ToLocalChecked());
+  MyObject *obj2 = Nan::ObjectWrap::Unwrap<MyObject>(
+      info[1]->ToObject(context).ToLocalChecked());
+  double sum = obj1->Val() + obj2->Val();
+  info.GetReturnValue().Set(Nan::New(sum));
+}
+
 void Initialize(v8::Local<v8::Object> exports, v8::Local<v8::Object> module)
 {
   v8::Local<v8::Context> context = exports->CreationContext();
@@ -85,7 +105,7 @@ void Initialize(v8::Local<v8::Object> exports, v8::Local<v8::Object> module)
   //             Nan::New<v8::FunctionTemplate>(CreateObject)
   //                 ->GetFunction(context)
   //                 .ToLocalChecked());
-  Nan::SetMethod(module, "exports", CreateObject);
+  // Nan::SetMethod(module, "exports", CreateObject);
 
   // module->Set(context,
   //             Nan::New("exports").ToLocalChecked(),
@@ -95,6 +115,28 @@ void Initialize(v8::Local<v8::Object> exports, v8::Local<v8::Object> module)
   // Nan::SetMethod(module, "exports", RunCallback);
 
   // Nan::SetMethod(module, "exports", CreateFunction);
+
+  // MyObject::Init(exports);
+
+  // Nan::HandleScope scope;
+  // MyObject::Init();
+  // module->Set(context,
+  //             Nan::New("exports").ToLocalChecked(),
+  //             Nan::New<v8::FunctionTemplate>(CreateObject2)
+  //                 ->GetFunction(context)
+  //                 .ToLocalChecked());
+
+  MyObject::Init();
+  exports->Set(context,
+               Nan::New("createObject").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(CreateObject2)
+                   ->GetFunction(context)
+                   .ToLocalChecked());
+  exports->Set(context,
+               Nan::New("add").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(Add2)
+                   ->GetFunction(context)
+                   .ToLocalChecked());
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)

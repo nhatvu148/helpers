@@ -10,7 +10,10 @@
             # "src/Samples/classexample.cpp",
             # "src/Samples/mytest.cpp"
             # "src/NodeTest.cpp"
-            "src/NanTest.cpp"
+            "src/NanTest.cpp",
+            # "src/MyObject.cpp",
+            # "src/FactoryWrap.cpp",
+            "src/PassWrap.cpp",
         ],
         "include_dirs": [
         "<!(node -e \"require('nan')\")"
