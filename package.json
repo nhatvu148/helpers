@@ -23,6 +23,7 @@
   "dependencies": {
     "bindings": "^1.5.0",
     "moment": "^2.27.0",
+    "nan": "^2.14.2",
     "node-addon-api": "^3.1.0",
     "software-license-key": "^1.0.0"
   },
