@@ -40,5 +40,11 @@ int main()
         }
     } while (input != "1" && input != "2" && input != "3");
 
+    do
+    {
+        std::cout << "Do you want to close the program? (Y/N)" << std::endl;
+        std::cin >> input;
+    } while (input != "y" && input != "Y");
+
     return 0;
 }
