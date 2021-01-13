@@ -2,6 +2,7 @@
 #include <sstream>
 #include <string>
 #include <limits>
+#include <new>
 
 int main()
 {
@@ -45,6 +46,51 @@ int main()
         std::cout << "Do you want to close the program? (Y/N)" << std::endl;
         std::cin >> input;
     } while (input != "y" && input != "Y");
+
+    std::cout << *(new int) << std::endl;
+    std::cout << new int << std::endl;
+
+    {
+        int *p = new int;
+        *p = 100;
+        std::cout << p << std::endl;
+        std::cout << *p << std::endl;
+
+        delete p;
+
+        p = new int[12];
+        std::cout << p << std::endl;
+
+        p = NULL;
+
+        if (p != NULL)
+        {
+            *p = 120;
+            std::cout << *p << std::endl;
+        }
+    }
+
+    int amount;
+    std::cout << "How many numbers would you like to store in an array?" << std::endl;
+    std::cin >> amount;
+    int *p = new (std::nothrow) int[amount];
+    if (p != NULL)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            std::cout << "Enter the " << (i + 1) << " number: " << std::endl;
+            std::cin >> p[i];
+        }
+
+        for (int i = 0; i < amount; i++)
+        {
+            std::cout << "p[" << i << "] = " << p[i] << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << "Not enough memory!" << std::endl;
+    }
 
     return 0;
 }
