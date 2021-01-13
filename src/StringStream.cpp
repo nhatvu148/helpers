@@ -13,8 +13,11 @@ int main() {
     ss << age;
 
     std::string info = ss.str();
-
+    std::cout.width(100);
     std::cout << info << std::endl;
+    std::cout.fill('x');
+    std::cout.width(50);
+    std::cout << std::left << "Hiii!";
     std::cout << "My name is " << name << " and I'm " << age << std::endl;
 
     return 0;
