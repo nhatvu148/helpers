@@ -57,8 +57,11 @@ int main()
         std::cout << *p << std::endl;
 
         delete p;
+        p = new int;
+        std::cout << p << std::endl;
 
-        p = new int[12];
+        delete p;
+        p = new int[12345];
         std::cout << p << std::endl;
 
         p = NULL;
