@@ -95,5 +95,31 @@ int main()
         std::cout << "Not enough memory!" << std::endl;
     }
 
+    std::string mystring = "Hello world!";
+    const char *mychar = mystring.c_str();
+    std::cout << mychar << std::endl;
+
+    char mychar2[] = "Hello world!";
+    std::string mystring2 = mychar2;
+    std::cout << mystring2 << std::endl;
+
+    // If loop inscription pointer without const ==> leak memory
+    // even after delete[] because incription has incremented by using **
+    // also has to use tempoPointer as incrementer
+    char *const inscription = new char[20];
+    inscription[0] = 'a';
+    inscription[1] = 'e';
+    inscription[2] = 'r';
+    inscription[3] = 'o';
+    inscription[4] = '\0';
+
+    char *tempoPointer = inscription;
+
+    while (*tempoPointer)
+    {
+        std::cout << *tempoPointer++;
+    }
+    delete[] inscription;
+
     return 0;
 }
