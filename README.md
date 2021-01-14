@@ -84,3 +84,7 @@
 - mitaki28.vscode-clang
 - ms-vscode.cmake-tools
 - twxs.cmake
+
+# C compile:
+
+- gcc src/c_play2.c src/c_play1.c -o src/play.exe
