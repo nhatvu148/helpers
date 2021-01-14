@@ -88,5 +88,8 @@ int main()
     }
     file.close();
 
+    system("cls");
+    system("dir");
+
     return 0;
 }
