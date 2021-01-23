@@ -94,5 +94,25 @@ int main()
     std::cout << mystring;         // printed as a library string
     std::cout << mystring.c_str(); // printed as a c-string
 
+    int myarray[20];
+    int *mypointer;
+    mypointer = myarray;
+    // myarray = mypointer;
+    // mypointer can be assigned a different address, whereas myarray can never be assigned anything, and will always represent the same block of 20 elements of type int
+    int a[20];
+    a[5] = 0;     // a [offset of 5] = 0
+    *(a + 5) = 0; // pointed to by (a+5) = 0
+
+    // postfix operators, such as increment and decrement, have higher precedence than prefix operators, such as the dereference operator (*)
+    // *p++   // same as *(p++): increment pointer, and dereference unincremented address
+    // *++p   // same as *(++p): increment pointer, and dereference incremented address
+    // ++*p   // same as ++(*p): dereference pointer, and increment the value it points to
+    // (*p)++ // dereference pointer, and post-increment the value it points to
+
+    // *p++ = *q++; Same as:
+    // *p = *q;
+    // ++p;
+    // ++q;
+
     return 0;
 }
