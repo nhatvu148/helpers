@@ -49,5 +49,12 @@ int main()
     m = operation(7, 5, addition);
     n = operation(20, m, minus);
     std::cout << n;
+
+    int *foo;
+    foo = new int[5];
+    // foo[0] or *foo
+    // foo[1] or *(foo+1)
+    // the size of a regular array needs to be a constant expression, and thus its size has to be determined at the moment of designing the program, before it is run, whereas the dynamic memory allocation performed by new allows to assign memory during runtime using any variable value as size
+    
     return 0;
 }
