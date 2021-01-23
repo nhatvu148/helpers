@@ -65,6 +65,8 @@
         "cwctype": "cpp",
         "memory_resource": "cpp",
         "optional": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "condition_variable": "cpp",
+        "ctime": "cpp"
     }
 }
