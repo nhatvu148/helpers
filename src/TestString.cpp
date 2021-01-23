@@ -58,5 +58,41 @@ int main()
     std::cout << fixed_multiply<int, 2>(10) << '\n';
     std::cout << fixed_multiply<int, 3>(10) << '\n';
 
+    char myword[] = {'H', 'e', 'l', 'l', 'o', '\0'};
+    std::cout << myword << '\n';
+    char myword1[] = "Hello";
+    char *myword2 = myword;
+    // Errors:
+    // myword = "Bye";
+    // myword[] = "Bye";
+    // myword = { 'B', 'y', 'e', '\0' };
+    std::cout << myword1 << '\n';
+    std::cout << myword2 << '\n';
+
+    // OK:
+    myword[0] = 'B';
+    myword[1] = 'y';
+    myword[2] = 'e';
+    myword[3] = '\0';
+
+    // null-terminated sequence, a fixed size determined on compilation before the program runs:
+    char question1[] = "What is your name? ";
+    // string, a dynamic size determined during runtime:
+    std::string question2 = "Where do you live? ";
+    // null-terminated sequence, a fixed size:
+    char answer1[80];
+    std::string answer2;
+    std::cout << question1;
+    std::cin >> answer1;
+    std::cout << question2;
+    std::cin >> answer2;
+    std::cout << "Hello, " << answer1;
+    std::cout << " from " << answer2 << "!\n";
+
+    char myntcs[] = "some text";
+    std::string mystring = myntcs; // convert c-string to string
+    std::cout << mystring;         // printed as a library string
+    std::cout << mystring.c_str(); // printed as a c-string
+
     return 0;
 }
