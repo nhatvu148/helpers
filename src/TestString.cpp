@@ -9,6 +9,16 @@ T sum(T a, T b)
     result = a + b;
     return result;
 }
+template <class T, class U>
+bool are_equal(T a, U b)
+{
+    return (a == b);
+}
+template <class T, int N>
+T fixed_multiply(T val)
+{
+    return val * N;
+}
 
 int main()
 {
@@ -37,5 +47,16 @@ int main()
     h = sum<double>(f, g);
     std::cout << k << '\n';
     std::cout << h << '\n';
+
+    if (are_equal(10, 10.0))
+        std::cout << "x and y are equal\n";
+    else
+        std::cout << "x and y are not equal\n";
+
+    std::cout << std::boolalpha;
+    std::cout << are_equal<int, double>(10, 10.0) << std::endl;
+    std::cout << fixed_multiply<int, 2>(10) << '\n';
+    std::cout << fixed_multiply<int, 3>(10) << '\n';
+
     return 0;
 }
