@@ -36,6 +36,14 @@
 
 - https://www.w3schools.com/cpp/
 
+- https://www.learncpp.com/
+
+- http://www.cplusplus.com/reference/cstdio/FILE/
+
+- https://fresh2refresh.com/c-programming/c-printf-and-scanf/#:~:text=We%20use%20printf()%20function,in%20C%20printf()%20statement.
+
+- https://docs.microsoft.com/en-us/cpp/?view=msvc-160
+
 # Exe builders:
 
 - https://www.geeksforgeeks.org/convert-python-script-to-exe-file/
