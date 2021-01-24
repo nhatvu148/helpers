@@ -55,6 +55,20 @@ int main()
     // foo[0] or *foo
     // foo[1] or *(foo+1)
     // the size of a regular array needs to be a constant expression, and thus its size has to be determined at the moment of designing the program, before it is run, whereas the dynamic memory allocation performed by new allows to assign memory during runtime using any variable value as size
-    
+
+    []() {
+        std::cout << "\nHello World!" << std::endl;
+    }();
+
+    auto sum = [](int a, int b) { return a + b; };
+    std::cout << sum(1, 2) << std::endl;
+
+    int sum2 = []() -> int {
+        int a = 3, b = 5, c;
+        c = a + b;
+        return c;
+    }();
+    std::cout << sum2 << std::endl;
+
     return 0;
 }
