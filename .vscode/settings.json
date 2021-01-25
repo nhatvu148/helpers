@@ -67,6 +67,11 @@
         "optional": "cpp",
         "string_view": "cpp",
         "condition_variable": "cpp",
-        "ctime": "cpp"
+        "ctime": "cpp",
+        "codecvt": "cpp",
+        "forward_list": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "variant": "cpp"
     }
 }
