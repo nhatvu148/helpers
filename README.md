@@ -101,18 +101,18 @@
 
 C:\Windows\System32\Drivers\etc\hosts
 
-User Start Up Folder:
-%AppData%\Microsoft\Windows\Start Menu\Programs\Startup
-Run > shell:startup
+    User Start Up Folder:
+    %AppData%\Microsoft\Windows\Start Menu\Programs\Startup
+    Run > shell:startup
 
-Computer Start Up Folder:
-C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
-Run > shell:common startup
+    Computer Start Up Folder:
+    C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+    Run > shell:common startup
 
-All applications:
-Run > Shell:AppsFolder
+    All applications:
+    Run > Shell:AppsFolder
 
-<a href="messenger://">Click here</a>
-<a href="ms-settings:emailandaccounts">Click here</a>
-msteams, ms-word, ms-calculator, vscode, ms-paint://
+    <a href="messenger://">Click here</a>
+    <a href="ms-settings:emailandaccounts">Click here</a>
+    msteams, ms-word, ms-calculator, vscode, ms-paint://
 
