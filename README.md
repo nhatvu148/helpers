@@ -99,7 +99,7 @@
 
 # Useful paths:
 
-C:\Windows\System32\Drivers\etc\hosts
+    C:\Windows\System32\Drivers\etc\hosts
 
     User Start Up Folder:
     %AppData%\Microsoft\Windows\Start Menu\Programs\Startup
