@@ -96,3 +96,23 @@
 # C compile:
 
 - gcc src/c_play2.c src/c_play1.c -o src/play.exe
+
+# Useful paths:
+
+C:\Windows\System32\Drivers\etc\hosts
+
+User Start Up Folder:
+%AppData%\Microsoft\Windows\Start Menu\Programs\Startup
+Run > shell:startup
+
+Computer Start Up Folder:
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+Run > shell:common startup
+
+All applications:
+Run > Shell:AppsFolder
+
+<a href="messenger://">Click here</a>
+<a href="ms-settings:emailandaccounts">Click here</a>
+msteams, ms-word, ms-calculator, vscode, ms-paint://
+
