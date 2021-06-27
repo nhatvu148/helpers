@@ -97,6 +97,10 @@
 
 - gcc src/c_play2.c src/c_play1.c -o src/play.exe
 
+# JS Docs Reference:
+
+- https://medium.com/swlh/creating-better-jsdoc-documentation-8b7a65744dcb
+
 # Useful paths:
 
     C:\Windows\System32\Drivers\etc\hosts
